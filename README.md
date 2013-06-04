@@ -1,7 +1,8 @@
-kaydells_butterflies
+xhtml_to_html5
 =================
 
-Kaydell's Original Butterflies XHTML Exercise
+This project is an exercise for students to convert an earlier
+version of HTML to HTML5.
 
 This is an exercise that I did in school, for XHTML 1.0 Transitional
 because my textbooks said at that time (written a couple of years ago)
