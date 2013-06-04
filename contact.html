@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Life Cycle of Butterflies | Contact Us</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="butterfly.css" />
+
+<style type="text/css">
+
+#contactFormDiv { 
+	width: 450px; 
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+
+#contactFormDiv legend {
+	padding: 0 7px;
+}	
+
+#contactFormDiv label { 
+	float: left; 
+    text-align: right;
+    width: 120px;
+    clear: left;
+}
+
+#contactFormDiv p {
+	text-align: center;
+}
+
+#contactFormDiv #submit { 
+	margin-left: 180px;
+    padding-bottom: 10px; 
+    float: left;
+    clear: left; 
+}
+
+#contactFormDiv #email { 
+	text-align: center;
+}
+
+</style>
+
+<script type="text/javascript">
+
+function validate(form) {
+
+    // get the name and the email address from the form
+    var name = form.name.value;
+    var email = form.email.value;
+    
+    // require a name
+    if (name.length === 0) {
+        alert("The name is required");
+        return;
+    }
+        
+    // require an email address
+    if (email.length === 0) {
+        alert("The email address is required");
+        return;
+    }
+    
+    // require that the email address at least "looks reasonable"
+    // The real test of an email address's validity is if the user
+    // validates the email when an email is sent to them.
+    var regEx = /^\S+@\S+\.\S{2,}$/;
+    var matches = regEx.test(email);
+        if (!matches) {
+       alert("The email address: '" + email + "' appears to be invalid.");
+       return;
+    }
+     
+    // otherwise validation is successful, 
+    // tell the user that they're OK, but don't really register them
+    // because I didn't know PHP yet.
+    alert("You have successfully registered for our newsletter");
+
+}
+
+</script>
+
+</head>
+<body>
+
+   <div id="wrapper">
+
+   <h1>Life Cycle of Butterflies</h1>
+
+   <div id="nav">
+      <ol>
+         <li><a href="index.html">Home</a></li>
+         <li><a href="video1.html">Video</a></li>
+         <li><a href="egg.html">Egg</a></li>
+         <li><a href="catepillar.html">Catepillar</a></li>
+         <li><a href="pupa.html">Pupa</a></li>
+         <li><a href="crysillas.html">Crysillas</a></li>
+         <li><a href="butterfly.html">Butterfly</a></li>
+         <li><a href="dying.html">Dying</a></li>
+         <li><a href="contact.html">Contact</a></li>
+         <li><a href="links.html">Links</a></li>
+      </ol>
+   </div>
+
+   <h2>Contact</h2>
+      
+   <!-- Contact Form -->
+   <div id="contactFormDiv">
+	   <form action="#">
+		   <fieldset>
+			   <legend> Register for our newsletter! </legend>
+			   <div><label for="name">Name*:</label><input type="text" name="name" id="name" /></div>
+			   <div><label for="email">EMail Address*:</label><input type="text" name="email" id="email" style="text-align:left" /></div>
+			   <p>
+			   		* Required Fields
+			   <p>
+			   <input type="button" value="Submit" id="submit" onclick="validate(this.form)" />
+		   </fieldset>
+	   </form>
+   </div>
+
+   <!-- EMail Address -->
+   <p style="text-align:center">   
+	   Email address: <a href="mailto:kaydell@yahoo.com">kaydell@yahoo.com</a>
+   </p>
+
+ </div>
+ <!-- end wrapper -->
+
+</body>
+</html>
