@@ -1,0 +1,305 @@
+# This document is a tutorial of how to use git from the command-line 
+# for version control.
+
+#########################################################################################
+# Note to Jordan.  I started writing you an email about my project that I enabled you
+# to collaborate on in github.com and I decided to generalize it into a rough draft for
+# a tutorial.  I'm including this rough draft in my xhtml_to_html5 project.  My experience
+# is with the Mac, maybe you could go through my tutorial step-by-step and translate it
+# into the equivalent "Windows Speak".  
+
+# This rough draft is kind of "half-baked" at this point.  It's helping me to learn git
+# better.  I read somewhere that before you do style (as in CSS) you should do content (as in HTML)
+# and this is a pre-HTML draft.
+#
+# I do have one thought for my friends using Windows and that is that Notepad++ is much
+# better for web development than Notepad is.
+#
+# One tip for trying things out with git and simulating multiple users each with their own
+# branch is that you can just have multiple folders one your computer each with their own
+# local repository.
+#
+#########################################################################################
+
+# From your Mac, first run Terminal.app
+# Then connect to directory to work in.  In this example, I'm connecting to my
+# home directory, but you can connect to any directory that you'd like to work in
+cd ~
+
+# create a new directory in the current directory
+# you can use any name except a name of a file or directory
+# in the current directory that already exists.
+mkdir xhtml_to_html5
+
+# connect to the new directory
+cd xhtml_to_html5
+
+# confirm that you're in the newly created directory by printing the
+# working directory again.
+pwd
+/Users/kaydell/xhtml_to_html5
+
+# list the directory contents to make sure that it is empty.  Only two directories
+# should show in the directory listing dot . and double-dot.  These are the current
+# directory and the parent directory.  Nothing else should be there.
+# make sure that you use the "a" option for Mac to list *all* files and directories
+ls -la
+total 0
+drwxr-xr-x   2 kaydell  staff    68 Jun  3 22:40 .
+drwxr-xr-x+ 54 kaydell  staff  1836 Jun  3 22:40 ..
+
+# create a new git repository. Note that each directory can have its own git directory
+# which is stored in a directory called ".git" which is invisible by default.
+
+git init # creates a local repository for the current folder
+Initialized empty Git repository in /Users/kaydell/xhtml_to_html5/.git/
+
+# list the directory contents again.  Now there should be a .git directory in the current
+# directory.  Note that .git since it starts with a dot, may be invisible to you in the
+# Finder.  If you want to see all invisible files and directories in the Finder, google
+# for "Mac Show Hidden Files"
+
+ls -la
+total 0
+drwxr-xr-x   3 kaydell  staff   102 Jun  3 22:41 .
+drwxr-xr-x+ 54 kaydell  staff  1836 Jun  3 22:40 ..
+drwxr-xr-x  10 kaydell  staff   340 Jun  3 22:41 .git
+
+# define a variable to refer to this project in the remote repository on the Internet
+# At github.com. This variable is called "tohtml5"
+
+git remote add tohtml5 https://github.com/kaydell/xhtml_to_html5.git
+
+# pull the files from the repository on github.com
+
+git pull tohtml5 master
+From https://github.com/kaydell/xhtml_to_html5
+ * branch            master     -> FETCH_HEAD
+
+# list the contents of the directory again.  The project's files should be there now.
+
+ls -la
+total 408
+drwxr-xr-x  25 kaydell  staff    850 Jun  3 22:44 .
+drwxr-xr-x+ 54 kaydell  staff   1836 Jun  3 22:40 ..
+drwxr-xr-x  13 kaydell  staff    442 Jun  3 22:44 .git
+-rw-r--r--   1 kaydell  staff     18 Jun  3 22:44 .gitignore
+-rw-r--r--   1 kaydell  staff    447 Jun  3 22:44 README.md
+-rw-r--r--   1 kaydell  staff    761 Jun  3 22:44 butterfly.css
+-rw-r--r--   1 kaydell  staff   1408 Jun  3 22:44 butterfly.html
+-rw-r--r--   1 kaydell  staff   8865 Jun  3 22:44 butterfly.jpg
+-rw-r--r--   1 kaydell  staff   1297 Jun  3 22:44 catepillar.html
+-rw-r--r--   1 kaydell  staff  21484 Jun  3 22:44 catepillar.jpg
+-rw-r--r--   1 kaydell  staff   3330 Jun  3 22:44 contact.html
+-rw-r--r--   1 kaydell  staff   1291 Jun  3 22:44 crysillas.html
+-rw-r--r--   1 kaydell  staff  11974 Jun  3 22:44 crysillas.jpg
+-rw-r--r--   1 kaydell  staff   1292 Jun  3 22:44 dying.html
+-rw-r--r--   1 kaydell  staff  41729 Jun  3 22:44 dying.jpg
+-rw-r--r--   1 kaydell  staff   1320 Jun  3 22:44 egg.html
+-rw-r--r--   1 kaydell  staff  18271 Jun  3 22:44 egg.jpg
+-rw-r--r--   1 kaydell  staff   1661 Jun  3 22:44 index.html
+-rw-r--r--   1 kaydell  staff  14127 Jun  3 22:44 life_cycle.gif
+-rw-r--r--   1 kaydell  staff   1604 Jun  3 22:44 links.html
+-rw-r--r--   1 kaydell  staff   7823 Jun  3 22:44 mating.jpg
+-rw-r--r--   1 kaydell  staff   1366 Jun  3 22:44 pupa.html
+-rw-r--r--   1 kaydell  staff  11045 Jun  3 22:44 pupa.jpg
+-rw-r--r--   1 kaydell  staff   1377 Jun  3 22:44 video1.html
+-rw-r--r--   1 kaydell  staff   1260 Jun  3 22:44 video2.html
+
+# The files of interest in this git tutorial are:
+# 1. ".git" This directory is the local git repository. It is capable of storing all copies of all version of the project.
+# 2. ".gitiignore" This is a text file that lists the types of files to exclude from git version control.
+# 3. "README.md" This is a "markdown file" that gives information about this project.See the following link
+#    for more information and/or for a free mardown editor for OS X.  http://mouapp.com/
+# 4. The files with the.html extension are text files that are best edited on a Mac with TextWrangler.app
+#    (which is free): http://www.barebones.com/products/textwrangler/ 
+#    or even better edited by by a great Mac program called: "BBEdit.app"
+#    (which is a good value at $50.00) http://www.barebones.com/products/bbedit/
+# 5. The CSS file called "kaydell.css" which contains CSS rules also known as styles for this website.
+# 6. The remaining files, all with extensions of either, .jpg, or .gif are all image files
+#    You won't need to change any of these files, but as long as you're reading about developing websites
+#    using the Mac, and you're reading about image files, I'd like to write something about what I use that
+#    that is affordable.  It's another great Mac application called "Graphic Converter".  It does more than convert
+#    graphics.  It is a full fledged paint program.  I use it to make images web-ready.
+#    You can download it and try it for free at the following URL: http://www.lemkesoft.de/en/start/
+
+# create a branch named "jordan" (or whatever you would like to call a branch to work on)
+# It's good to create a branch to work on and not work on the "master" not because you might
+# lose something.  Either way, every revision will be in the history, but it's good to work
+# on a branch so that you don't clutter up the master branch with every little change.
+# the name of the branch is local to the git repository which means for other project
+# on your computer, you can use the same branch name if you wanted to.
+# for this example, this directory has its own local git repository, so there should
+# not be any conflicts with the name that you choose.
+git branch jordan
+
+# you can confirm that the branch was actually created with the following command
+# the branch "master" will have the asterisk by it  because it is the current branch.
+git branch
+  jordan
+* master
+
+# use the branch named "jordan"
+git checkout jordan
+Switched to branch 'jordan'
+
+# git told us that switching branches was successful, but let's issue the command again
+# to have git print out the current branch.
+git branch
+* jordan
+  master
+
+# Notice above that now the asterisk is by the branch named "jordan"
+
+# make your changes using your text editor to change any files that you want to.
+# Use BBEdit or TextWrangler to change the HTML
+# You could edit the images too, but you shouldn't need to
+# I'll change a couple of the HTML files for this tutorial, using BBEdit.app
+
+# After making a few changes, add the changes to the index of your local repository
+git add -A
+
+# to see what's scheduled to possibily be committed to your local git repository enter
+# the following command:
+git status
+# On branch jordan
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   catepillar.html
+#	modified:   index.html
+#
+
+# commit all of the changes in the index to your local repository
+# try to commit logical changes together where one brief comment makes sense
+# and try to commit often to lessen the possibility of conflicts between yourself
+# and other collaborators.
+git commit -m "Changed some of the DOCTYPES to specify HTML5"
+[jordan 456498d] Changed some of the DOCTYPES to specify HTML5
+ 2 files changed, 10 insertions(+), 12 deletions(-)
+
+ # After this command, you changes will go over the Internet and up to github.com
+ # and be stored in the remote repository there.
+ # Let's make some more changes to demonstrate that we can have more than one
+ # commit before pushing the
+
+# There are two video web pages.  One is called "video1.html" and the other is called
+# video2.html.  The reason that two files exist is that I was having trouble displaying
+# a video in a page and I'm in the middel of working on it.  What I want to do is clean
+# things up by deciding which file to keep.  BBEdit.app is a great help with this allowing
+# me to compare the two text files: video1.html and video2.html.  I see that video1.html
+# is the one referenced by all of the other .html files, but video2.html is the one that
+# works.  What I'm going to do to minimize the number of changes at this time is do delete
+# the file called video1.html and then rename the file called video2.html to be video1.html
+# Although version control software such as git is a necessary thing to have for developing
+# software.  You have to be careful.  You can't just move files, rename files or delete files
+# you have to go through git to move, rename, or delete files so that all of the git repositories
+# scattered wherever they may be, find out about the changes.
+
+# First, we'll delete the file video1.html
+git rm video1.html
+rm 'video1.html'
+
+# We can chceck to see if the file exists in our local file systems by listing the current
+# directory
+ls -la
+total 416
+drwxr-xr-x  25 kaydell  staff    850 Jun  3 23:27 .
+drwxr-xr-x+ 54 kaydell  staff   1836 Jun  3 22:40 ..
+-rw-r--r--@  1 kaydell  staff   6148 Jun  3 23:27 .DS_Store
+drwxr-xr-x  16 kaydell  staff    544 Jun  3 23:27 .git
+-rw-r--r--   1 kaydell  staff     18 Jun  3 22:44 .gitignore
+-rw-r--r--   1 kaydell  staff    447 Jun  3 22:44 README.md
+-rw-r--r--   1 kaydell  staff    761 Jun  3 22:44 butterfly.css
+-rw-r--r--   1 kaydell  staff   1408 Jun  3 22:44 butterfly.html
+-rw-r--r--   1 kaydell  staff   8865 Jun  3 22:44 butterfly.jpg
+-rw-r--r--@  1 kaydell  staff   1099 Jun  3 23:07 catepillar.html
+-rw-r--r--   1 kaydell  staff  21484 Jun  3 22:44 catepillar.jpg
+-rw-r--r--   1 kaydell  staff   3330 Jun  3 22:44 contact.html
+-rw-r--r--   1 kaydell  staff   1291 Jun  3 22:44 crysillas.html
+-rw-r--r--   1 kaydell  staff  11974 Jun  3 22:44 crysillas.jpg
+-rw-r--r--   1 kaydell  staff   1292 Jun  3 22:44 dying.html
+-rw-r--r--   1 kaydell  staff  41729 Jun  3 22:44 dying.jpg
+-rw-r--r--   1 kaydell  staff   1320 Jun  3 22:44 egg.html
+-rw-r--r--   1 kaydell  staff  18271 Jun  3 22:44 egg.jpg
+-rw-r--r--@  1 kaydell  staff   1463 Jun  3 23:05 index.html
+-rw-r--r--   1 kaydell  staff  14127 Jun  3 22:44 life_cycle.gif
+-rw-r--r--   1 kaydell  staff   1604 Jun  3 22:44 links.html
+-rw-r--r--   1 kaydell  staff   7823 Jun  3 22:44 mating.jpg
+-rw-r--r--   1 kaydell  staff   1366 Jun  3 22:44 pupa.html
+-rw-r--r--   1 kaydell  staff  11045 Jun  3 22:44 pupa.jpg
+-rw-r--r--   1 kaydell  staff   1260 Jun  3 22:44 video2.html
+
+# video1.html is gone from the above listing.  Next, let's do a git status to see what it says
+git status
+# On branch jordan
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	deleted:    video1.html
+#
+
+# Although this listing says "deleted" if you look above that it says: "Changes to be committed"
+# so this change hasn't actually been made even in my local git repository let alone in the remote
+# git repository in my github.com account
+
+# Next, I'll rename video2.html to be called video1.html
+# In Unix (Mac is a kind of Unix) mv is the command for "move".
+# Unix treat renameing a file as moving the file.
+git mv video2.html video1.html
+
+# Now, I'm going to peek and make sure that the rename worked.
+ls -la
+total 416
+drwxr-xr-x  25 kaydell  staff    850 Jun  3 23:31 .
+drwxr-xr-x+ 54 kaydell  staff   1836 Jun  3 22:40 ..
+-rw-r--r--@  1 kaydell  staff   6148 Jun  3 23:27 .DS_Store
+drwxr-xr-x  16 kaydell  staff    544 Jun  3 23:31 .git
+-rw-r--r--   1 kaydell  staff     18 Jun  3 22:44 .gitignore
+-rw-r--r--   1 kaydell  staff    447 Jun  3 22:44 README.md
+-rw-r--r--   1 kaydell  staff    761 Jun  3 22:44 butterfly.css
+-rw-r--r--   1 kaydell  staff   1408 Jun  3 22:44 butterfly.html
+-rw-r--r--   1 kaydell  staff   8865 Jun  3 22:44 butterfly.jpg
+-rw-r--r--@  1 kaydell  staff   1099 Jun  3 23:07 catepillar.html
+-rw-r--r--   1 kaydell  staff  21484 Jun  3 22:44 catepillar.jpg
+-rw-r--r--   1 kaydell  staff   3330 Jun  3 22:44 contact.html
+-rw-r--r--   1 kaydell  staff   1291 Jun  3 22:44 crysillas.html
+-rw-r--r--   1 kaydell  staff  11974 Jun  3 22:44 crysillas.jpg
+-rw-r--r--   1 kaydell  staff   1292 Jun  3 22:44 dying.html
+-rw-r--r--   1 kaydell  staff  41729 Jun  3 22:44 dying.jpg
+-rw-r--r--   1 kaydell  staff   1320 Jun  3 22:44 egg.html
+-rw-r--r--   1 kaydell  staff  18271 Jun  3 22:44 egg.jpg
+-rw-r--r--@  1 kaydell  staff   1463 Jun  3 23:05 index.html
+-rw-r--r--   1 kaydell  staff  14127 Jun  3 22:44 life_cycle.gif
+-rw-r--r--   1 kaydell  staff   1604 Jun  3 22:44 links.html
+-rw-r--r--   1 kaydell  staff   7823 Jun  3 22:44 mating.jpg
+-rw-r--r--   1 kaydell  staff   1366 Jun  3 22:44 pupa.html
+-rw-r--r--   1 kaydell  staff  11045 Jun  3 22:44 pupa.jpg
+-rw-r--r--   1 kaydell  staff   1260 Jun  3 22:44 video1.html
+
+# Now, we'll add all changes to prepare them to be committed to the local repository
+git add -A
+
+# Then commit the changes to the local repository
+git commit -m "Deleted video1.html and renamed video2.html to be called video1.html"
+[jordan 6e2eff7] Deleted video1.html and renamed video2.html to be called video1.html
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ rename video2.html => video1.html (100%)
+
+# push your changes to the remote repository on github.com
+# notice that you can use the variable called "tohtml5" that stores the URL
+# of the remote repository over an the github.com website so that you don't
+# have to type in the following URL every time: https://github.com/kaydell/xhtml_to_html5.git
+git push tohtml5 jordan
+To https://github.com/kaydell/xhtml_to_html5.git
+ * [new branch]      jordan -> jordan
+
+# if you want to merge your changes back into the master /Users/kaydell
+branch, I think that the following would work
+git merge jordan
+
+# once you're done, you can push your changes back to github.com
+git push tohtml5 master
+
+# Then give the Internet a minute or two for your changes to go through and look for them
+# on the gethub.com website.  Note that you may have to refresh the page in your web browser.
